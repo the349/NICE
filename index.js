@@ -70,4 +70,4 @@ bot.on("message", (message) => {
     messageCount++
     console.log("message #"+messageCount+":"+message.content+" - "+message.author.tag)
 })
-bot.login("NDYyNzI5ODk3Mjk5NjczMDg5.DhmGgg.ZsDjDAdBfoqHC0W_Ho5PDKrSHxo")
+bot.login("you token here")
