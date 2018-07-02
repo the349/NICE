@@ -93,4 +93,4 @@ bot.on("message", async (message) => {
 /*bot.on("leave", () => {
     console.log("someone left the server")
 })*/
-bot.login("you token here")
+bot.login(process.env.BOT_TOKEN)
