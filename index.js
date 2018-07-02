@@ -2,6 +2,7 @@ console.log("NICE bot is starting up")
 console.log("NICE bot is loading files")
 const Discord = require("discord.js")
 //const commando = require("discord.js-commando")
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest
 console.log("NICE bot is loading vars")
 const embedRed = 0xff0000
 const embedOrange = 0xff790c
@@ -22,7 +23,8 @@ bot.on("ready" , () => {
     console.log("NICE bot is ready")
     //bot.user.send("I'm here")
 })
-bot.on("message", (message) => {
+bot.on("message", async (message) => {
+    if(message.author.bot){return}
     if(message.content == "NICE:nice_words") {
         console.log("NICE is finding nice words")
         message.channel.sendMessage("you're all nice :)")
@@ -67,7 +69,28 @@ bot.on("message", (message) => {
             embed : kembed
         })
     }
+    /*if(message.content.toLowerCase().includes("nice:will") || message.content.toLowerCase().includes("nice:am")) {
+        var yesnoapi = new XMLHttpRequest()
+        yesnoapi.onreadystatechange = function () {
+            console.log(yesnoapi.readyState)
+            console.log(yesnoapi.status)
+            if (yesnoapi.readyState == 1 && yesnoapi.status == 0) {
+                console.log(yesnoapi)
+            }
+        }
+        console.log(yesnoapi)
+        yesnoapi.open("GET", "http://yesno.wtf")
+        yesnoapi.send()
+    }*/
+    if(message.content.toLowerCase().includes("nice:ping")) {
+        const m = await message.channel.send("Ping?");
+        //console.log(m)
+        m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. api Latency is ${Math.round(bot.ping)}ms`)
+    }
     messageCount++
     console.log("message #"+messageCount+":"+message.content+" - "+message.author.tag)
 })
-bot.login("NDYyNzI5ODk3Mjk5NjczMDg5.DhmGgg.ZsDjDAdBfoqHC0W_Ho5PDKrSHxo")
+/*bot.on("leave", () => {
+    console.log("someone left the server")
+})*/
+bot.login("NDYyNzI5ODk3Mjk5NjczMDg5.DhqILA.oQrjqKbEiCuUX78QHOTGdNJyVvY")
