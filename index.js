@@ -90,11 +90,7 @@ bot.on("message", async (message) => {
     messageCount++
     console.log("message #"+messageCount+":"+message.content+" - "+message.author.tag)
 })
-<<<<<<< HEAD
 /*bot.on("leave", () => {
     console.log("someone left the server")
 })*/
-bot.login("NDYyNzI5ODk3Mjk5NjczMDg5.DhqILA.oQrjqKbEiCuUX78QHOTGdNJyVvY")
-=======
 bot.login("you token here")
->>>>>>> 3b658ba58651b925131777e8e9f90d1f01fb5c1f
