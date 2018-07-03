@@ -92,7 +92,6 @@ bot.on("message", async (message) => {
         //console.log(m)
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. api Latency is ${Math.round(bot.ping)}ms`)
     }
-    console.log(command)
     messageCount++
     console.log("message #"+messageCount+":"+message.content+" - "+message.author.tag)
 })
