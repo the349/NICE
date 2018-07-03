@@ -12,6 +12,7 @@
   "author": "the349",
   "license": "ISC",
   "dependencies": {
+    "npm": "^6.1.0",
     "bufferutil": "^3.0.5",
     "discord.js": "^11.3.2",
     "erlpack": "github:discordapp/erlpack",
@@ -20,8 +21,7 @@
     "opusscript": "0.0.6",
     "sodium": "^2.0.3",
     "uws": "^9.148.0",
-    "xmlhttprequest": "^1.8.0",
-    "npm": "^6.1.0"
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {},
   "repository": {
