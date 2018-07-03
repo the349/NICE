@@ -20,7 +20,8 @@
     "opusscript": "0.0.6",
     "sodium": "^2.0.3",
     "uws": "^9.148.0",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "npm": "^6.1.0"
   },
   "devDependencies": {},
   "repository": {
