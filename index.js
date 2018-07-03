@@ -15,6 +15,7 @@ const embedPink = 0xff00ff
 const embedBlack = 0x000000
 const embedWhite = 0xffffff
 const embedGray = 0x777777
+const prefix = "NICE:"
 console.log("NICE bot is loading discord bot")
 const bot = new Discord.Client()
 let messageCount = 0
@@ -25,7 +26,11 @@ bot.on("ready" , () => {
 })
 bot.on("message", async (message) => {
     if(message.author.bot){return}
-    if(message.content == "NICE:nice_words") {
+    if(message.content.indexOf(prefix) !== 0){return}
+    const args = message.content.slice(prefix.length).trim().split(/ +/g)
+    const command = args.shift().toLowerCase()
+    //var command = message.content.toLowerCase().split(prefix.toLowerCase())
+    if(command == "nice_words") {
         console.log("NICE is finding nice words")
         message.channel.sendMessage("you're all nice :)")
     }
@@ -82,11 +87,12 @@ bot.on("message", async (message) => {
         yesnoapi.open("GET", "http://yesno.wtf")
         yesnoapi.send()
     }*/
-    if(message.content.toLowerCase().includes("nice:ping")) {
+    if(command == "ping") {
         const m = await message.channel.send("Ping?");
         //console.log(m)
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. api Latency is ${Math.round(bot.ping)}ms`)
     }
+    console.log(command)
     messageCount++
     console.log("message #"+messageCount+":"+message.content+" - "+message.author.tag)
 })
