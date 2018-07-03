@@ -4,13 +4,12 @@
   "description": "A very NICE bot",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
-    "test_main_run": "npm audit;npm test"
+    "test": "node index.js"
   },
   "keywords": [
     "discord"
   ],
-  "author": "Joseph Malone",
+  "author": "the349",
   "license": "ISC",
   "dependencies": {
     "bufferutil": "^3.0.5",
