@@ -1,7 +1,9 @@
 # NICE
+[![Build Status](https://travis-ci.org/the349/NICE.svg?branch=master)](https://travis-ci.org/the349/NICE)
+### Description
 A very NICE discord bot
 
-## invite
+## Invite
 [Invite](https://discordapp.com/oauth2/authorize?&client_id=462729897299673089&scope=bot&permissions=470019135) to you discord server
 
 ## This release
@@ -12,5 +14,3 @@ A very NICE discord bot
 - [ ] Custom commands (If I can.)
 - [ ] Yes no question support (Using [yesno.wtf's](https://yesno.wtf) API)
 - [ ] And I'm sure many more ideas to come
-##### That's it for now
-Well, that's it for now. New updates coming soon
