@@ -1,5 +1,5 @@
 # NICE
-[![Build Status](https://travis-ci.org/the349/NICE.svg?branch=master)](https://travis-ci.org/the349/NICE)
+[![CircleCI](https://circleci.com/gh/the349/NICE.svg?style=svg)](https://circleci.com/gh/the349/NICE)
 ### Description
 A very NICE discord bot
 
