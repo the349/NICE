@@ -134,4 +134,4 @@ bot.on("warning", (warning) => {
 /*bot.on("leave", () => {
     console.log("someone left the server")
 })*/
-bot.login("NDYyNzI5ODk3Mjk5NjczMDg5.DhvKag.IOQWSG-QJGvWnk_4uuiiDd4o9EU")
+bot.login(process.env.BOT_TOKEN)
