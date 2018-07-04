@@ -22,9 +22,40 @@ let messageCount = 0
 bot.on("ready" , () => {
     bot.user.setActivity("I'm NICE")
     console.log("NICE bot is ready")
+    //console.log(bot.channels.get)
     //bot.user.send("I'm here")
 })
 bot.on("message", async (message) => {
+    if(message.content.includes(process.env.BOT_TOKEN) && message.deletable) {
+        console.log("ALERT: NICE has found that the bot token was posted. Said message will now be deleted and the Message's auther will be kicked")
+        let user = message.author
+        let reason = "Posted an offensive string to the NICE bot"
+        message.guild.member(user).kick(reason + "\n NEVER POST THAT STRING AGAIN!!!")
+        const kembed = new Discord.RichEmbed()
+        .setAuthor(`${user.username} has been kicked from the server.`, user.displayAvatarURL)
+        .addField("Kick information", `**Kicked User:** ${user.tag}\n**Moderator:** ${bot.user.tag}\n**Reason:** ${reason}`)
+        .setColor(embedRed);
+        message.channel.send({
+            embed : kembed
+        })
+        message.delete()
+        .then(msg => console.log(`Deleted message from ${msg.author.username}`))
+        .catch(console.error);
+    } else if(message.content.includes(process.env.BOT_TOKEN) && !message.deletable) {
+        console.log("ALERT: NICE has found that the bot token was posted. Said message is not deletable. TIP: Because said message is not deletable you should reset your token before someone steals it. Message's auther will be kicked.")
+        let user = message.author
+        let reason = "Posted an offensive string to the NICE bot"
+        message.guild.member(user).kick(reason + "\n NEVER POST THAT STRING AGAIN!!!")
+        const kembed = new Discord.RichEmbed()
+        .setAuthor(`${user.username} has been kicked from the server.`, user.displayAvatarURL)
+        .addField("Kick information", `**Kicked User:** ${user.tag}\n**Moderator:** ${bot.user.tag}\n**Reason:** ${reason}`)
+        .setColor(embedRed);
+        message.channel.send({
+            embed : kembed
+        })
+        .then(msg => console.log(`Deleted message from ${msg.author.username}`))
+        .catch(console.error);
+    }
     if(message.author.bot){return}
     if(message.content.indexOf(prefix) !== 0){return}
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
@@ -92,10 +123,15 @@ bot.on("message", async (message) => {
         //console.log(m)
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. api Latency is ${Math.round(bot.ping)}ms`)
     }
+    //console.log(command)
     messageCount++
     console.log("message #"+messageCount+":"+message.content+" - "+message.author.tag)
+})
+bot.on("warning", (warning) => {
+    console.log("NICE has found a warning:" + warning.stack)
+    bot.channels.get("general")
 })
 /*bot.on("leave", () => {
     console.log("someone left the server")
 })*/
-bot.login(process.env.BOT_TOKEN)
+bot.login("NDYyNzI5ODk3Mjk5NjczMDg5.DhvKag.IOQWSG-QJGvWnk_4uuiiDd4o9EU")
