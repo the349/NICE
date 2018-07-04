@@ -7,10 +7,7 @@
     "npm": "^6.1.0",
     "bufferutil": "^3.0.5",
     "discord.js": "^11.3.2",
-<<<<<<< HEAD
     "erlpack": "^0.1.0",
-=======
->>>>>>> f4d4f6bbc9c49845c620dbd84662cb8afea392aa
     "libsodium-wrappers": "^0.7.3",
     "node-opus": "^0.2.9",
     "opusscript": "^0.0.6",
