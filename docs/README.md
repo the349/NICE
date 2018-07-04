@@ -1,9 +1,7 @@
 # NICE
-[![CircleCI](https://circleci.com/gh/the349/NICE.svg?style=svg)](https://circleci.com/gh/the349/NICE)
-### Description
 A very NICE discord bot
 
-## Invite
+## invite
 [Invite](https://discordapp.com/oauth2/authorize?&client_id=462729897299673089&scope=bot&permissions=470019135) to you discord server
 
 ## This release
