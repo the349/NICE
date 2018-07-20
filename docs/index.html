@@ -59,7 +59,7 @@
   			firebase.initializeApp(config);
             const Database = firebase.database()
             const routes = {
-                '/': emailPage
+                'NICE/': emailPage
             }
             var emailPage = { template:'<div class="container text-light animated fadeInDown" style="padding-top:10%;"> <center> <h2> Email please? </h2> <input class="form-control bg-dark text-light" style="border:none;border-bottom:4px white solid;border-radius:0%;font-size:300%;outline:0;max-width:100%;text-align:center;" spellcheck="false"> </center> </div>' }
             var NotFound = { template: '<div class="container text-light animated fadeInDown" style="padding-top:10%;"> <center> <h2> 404 not found </h2> </div>'}
