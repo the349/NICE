@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NICE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
+        <style>textarea:focus, input:focus{outline: none;} .form-control:focus{-webkit-box-shadow: none;box-shadow: none;border-color: inherit;} #servercl {display:none;}</style>
+    </head>
+    <body class="bg-dark">
+        <div id="page">
+            <nav class="navbar navbar-dark text-light">
+                <a herf="#" class="navbar-brand">
+                    <img src="https://api.adorable.io/avatars/285/NICE.png" width="26" class="rounded-circle mr-1">
+                    NICE
+                </a>
+                <div class="contentstuff" id="navbarContent">
+                    <ul class="navbar-nav navbar-expand-lg mr-auto">
+                        <li class="nav-item dropdown">
+        					<a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          						Account
+        					</a>
+        					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown" style="transition:all 0.5s ease-in-out;position:absolute;top:50px;left:-80px;transform:translateY(-1em);">
+          						<a class="dropdown-item" href="#">My servers</a>
+          						<div class="dropdown-divider"></div>
+          						<a class="dropdown-item" href="#">logout</a>
+        					</div>
+      					</li>
+                        <li class="nav-item ml-2">
+                            <button class="btn btn-outline-secondary" style="border-radius:30px;border-width:2px;">
+                                Login
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="alert alert-danger" id="servercl">
+                ALERT: can't connect with the server.
+            </div>
+            <div id="app">
+                
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script> 
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+		<script>
+  			// Initialize Firebase
+  			var config = {
+    			apiKey: "AIzaSyBANOt2HdIaBxKEmVU26oBsfhYFJMFcP_U",
+    			authDomain: "nice-bot-208821.firebaseapp.com",
+    			databaseURL: "https://nice-bot-208821.firebaseio.com",
+    			projectId: "nice-bot-208821",
+    			storageBucket: "nice-bot-208821.appspot.com",
+    			messagingSenderId: "939422885564"
+  			};
+  			firebase.initializeApp(config);
+            const Database = firebase.database()
+            const routes = {
+                '/': emailPage
+            }
+            var emailPage = { template:'<div class="container text-light animated fadeInDown" style="padding-top:10%;"> <center> <h2> Email please? </h2> <input class="form-control bg-dark text-light" style="border:none;border-bottom:4px white solid;border-radius:0%;font-size:300%;outline:0;max-width:100%;text-align:center;" spellcheck="false"> </center> </div>' }
+            var NotFound = { template: '<div class="container text-light animated fadeInDown" style="padding-top:10%;"> <center> <h2> 404 not found </h2> </div>'}
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    currentRoute: window.location.pathname
+                },
+                computed: {
+                    ViewComponent () {
+                        return routes[this.currentRoute] || NotFound
+                    }
+                },
+                render (h) { return h(this.ViewComponent) }
+            })
+		</script>
+    </body>
+</html>
