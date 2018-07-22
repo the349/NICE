@@ -19,7 +19,6 @@ const embedBlack = 0x000000
 const embedWhite = 0xffffff
 const embedGray = 0x777777
 const prefix = "NICE:"
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY
 console.log("NICE bot is loading discord bot")
 const bot = new Discord.Client()
 let messageCount = 0
