@@ -4,19 +4,18 @@
   "description": "a very NICE discord bot",
   "main": "index.js",
   "dependencies": {
-    "npm": "^6.1.0",
+    "@tensorflow/tfjs": "^0.12.3",
     "bufferutil": "^3.0.5",
     "discord.js": "^11.3.2",
-<<<<<<< HEAD
-    "erlpack": "^0.1.0",
-=======
->>>>>>> f4d4f6bbc9c49845c620dbd84662cb8afea392aa
+    "erlpack": "github:discordapp/erlpack",
+    "firebase": "^5.3.0",
     "libsodium-wrappers": "^0.7.3",
     "node-opus": "^0.2.9",
-    "opusscript": "^0.0.6",
+    "opusscript": "0.0.6",
     "sodium": "^2.0.3",
     "uws": "^9.148.0",
-    "xmlhttprequest": "^1.8.0"
+    "xmlhttprequest": "^1.8.0",
+    "ytdl-core": "^0.21.1"
   },
   "devDependencies": {},
   "scripts": {
