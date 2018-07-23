@@ -10,7 +10,7 @@ A very NICE discord bot
 
 > **NOTE:** This project is postponed until further notice
 ## Invite
-[Invite](https://discordapp.com/oauth2/authorize?&client_id=462729897299673089&scope=bot&permissions=470019135) to you discord server
+[Invite](https://discordapp.com/oauth2/authorize?client_id=469305329772003388&permissions=470019135&redirect_uri=https%3A%2F%2Fjosephmalone.oyosite.com%2Fnice%2Fbackend.html&scope=bot) to you discord server
 
 ## This release
 ### NICE v0.0.1R1
