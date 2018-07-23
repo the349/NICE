@@ -18,6 +18,8 @@ const embedPink = 0xff00ff
 const embedBlack = 0x000000
 const embedWhite = 0xffffff
 const embedGray = 0x777777
+const version = "v0.0.1"
+const api_version = "v51"
 const prefix = "NICE:"
 console.log("NICE bot is loading discord bot")
 const bot = new Discord.Client()
@@ -131,6 +133,16 @@ bot.on("message", async (message) => {
         .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
         .addField("Here is a list of commands", {image: "https://github.com/the349/NICE/blob/master/icons/help.png"})
         message.author.send({
+            embed:kembed
+        })
+    }
+    if(command == "info") {
+        const kembed = new Discord.RichEmbed()
+        .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
+        .addField(`**version**: ${version}`)
+        .addField(`**API version**: ${api_version}`)
+        .setColor(embedBlue)
+        message.channel.send({
             embed:kembed
         })
     }
