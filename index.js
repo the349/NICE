@@ -94,7 +94,6 @@ bot.on("message", async (message) => {
         //console.log(m)
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. api Latency is ${Math.round(bot.ping)}ms`)
     }
-<<<<<<< HEAD
     if(command == "help") {
         const kembed = new Discord.RichEmbed()
         .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
@@ -114,8 +113,6 @@ bot.on("message", async (message) => {
         })
     }
     //console.log(command)
-=======
->>>>>>> 6004809f9990ec7c15f2dd01f45db358e731a3f8
     messageCount++
     console.log("message #"+messageCount+":"+message.content+" - "+message.author.tag)
 })
