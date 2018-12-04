@@ -16,6 +16,9 @@
     "xmlhttprequest": "^1.8.0",
     "ytdl-core": "^0.21.1"
   },
+  "engines": {
+    "node": "8.11.3"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "node index.js"
