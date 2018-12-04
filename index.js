@@ -27,7 +27,7 @@ bot.on("ready" , () => {
     //bot.user.send("I'm here")
 })
 bot.on("message", async (message) => {
-    if(massage.content.toLowerCase().includes("nice:")) {
+    if(message.content.toLowerCase().includes("nice:")) {
         message.channel.sendMessage("Sorry but the NICE discord bot is down for a update. It will be up in about 2 weeks.")
     }
     return
