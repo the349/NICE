@@ -22,6 +22,10 @@ console.log("uncy bot is loading discord bot")
 const bot = new Discord.Client()
 let messageCount = 0
 let yesnorid = 0
+let pointData = {
+    users: {},
+    servers:{}
+}
 function runCommand(i, e) {
     if(i && e) {
         if(command == i) {
@@ -164,7 +168,9 @@ bot.on("message", async (message) => {
     if(command == "avatar") {
         let auser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!auser) {return message.channel.send("Can't find user!")}
-        message.channel.send(auser.displayAvatarURL)
+        let aembed = new Discord.RichEmbed()
+        aembed.setColor(embedPurple)
+        aembed.setAuther(auser.tag, auser.displayAvaterURL)
     }
     if(command == "roll") {
         let dice = Math.floor(Math.random() * 6)
