@@ -119,7 +119,7 @@ bot.on("message", async (message) => {
     /*if(command == "setup") {
         yesnorid = 1
         const sembed = new Discord.RichEmbed()
-        sembed.setAuther(bot.user.tag, bot.user.displayAvatarURL)
+        sembed.setAuthor(bot.user.tag, bot.user.displayAvatarURL)
         sembed.addField("Hi. I'm uncy, I'm here to help and have fun. I just need a couple details and you'll be on your way! so are you ready?")
     }
     if(yesnorid = 1) {
@@ -170,20 +170,29 @@ bot.on("message", async (message) => {
         if(!auser) {return message.channel.send("Can't find user!")}
         let aembed = new Discord.RichEmbed()
         aembed.setColor(embedPurple)
-        aembed.setAuther(auser.tag, auser.displayAvaterURL)
+        aembed.setAuthor(auser.tag, auser.displayAvaterURL)
+        message.channel.send({
+            embed: aembed
+        })
     }
     if(command == "roll") {
         let dice = Math.floor(Math.random() * 6)
         let rembed = new Discord.RichEmbed()
         rembed.setColor(embedPurple)
-        rembed.setAuther(bot.user.tag, bot.user.displayAvatarURL)
+        rembed.setAuthor(bot.user.tag, bot.user.displayAvatarURL)
         rembed.addField(`You got a ${dice}`)
+        message.channel.send({
+            embed: rembed
+        })
     }
     if(command == "points") {
         let pembed = new Discord.RichEmbed()
         pembed.setColor(embedPurple)
-        pembed.setAuther(bot.user.tag, bot.user.displayAvatarURL)
+        pembed.setAuthor(bot.user.tag, bot.user.displayAvatarURL)
         pembed.addField("The point system is not up yet.")
+        message.channel.send({
+            embed: pembed
+        })
     }
     //console.log(command)
     messageCount++
@@ -194,7 +203,7 @@ bot.on("guildMemberAdd", member => {
     if (!channel) {return}
     let jembed = new Discord.RichEmbed()
     jembed.setColor(embedBlue)
-    jembed.setAuther(bot.user.tag, bot.user.displayAvatarURL)
+    jembed.setAuthor(bot.user.tag, bot.user.displayAvatarURL)
     jembed.addField(`Welcome to the server, ${member}`)
 })
 bot.login(process.env.BOT_TOKEN)
