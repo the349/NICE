@@ -182,7 +182,7 @@ bot.on("message", async (message) => {
     if(command == "points") {
         let pembed = new Discord.RichEmbed()
         pembed.setColor(embedPurple)
-        pembed.setAuthur(bot.user.tag, bot.user.displayAvatarURL)
+        pembed.setAuther(bot.user.tag, bot.user.displayAvatarURL)
         pembed.addField("The point system is not up yet.")
     }
     //console.log(command)
