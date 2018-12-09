@@ -44,7 +44,8 @@ function createEmbed() {
     return cembed
 }
 let uptime = 0
-let uptimeTimer = setInterval(function () {i++},1000*60*60)
+let uptimeTimer
+if(process.env.BOT_TOKEN) {uptimeTimer = setInterval(function () {i++},1000*60*60)}
 bot.on("ready" , () => {
     bot.user.setActivity("I'm NICE")
     console.log("uncy bot is ready")
