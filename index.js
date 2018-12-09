@@ -142,7 +142,7 @@ bot.on("message", async (message) => {
         let incidentchannel = message.guild.channels.find(`name`, "incidents");
         if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
         message.guild.member(bUser).ban(bReason);
-        incidentcha nnel.send(bEmbed);
+        incidentchannel.send(bEmbed);
     }
     if(command == "kick") {
         let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
