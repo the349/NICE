@@ -45,7 +45,7 @@ function createEmbed() {
 }
 let uptime = 0
 let uptimeTimer
-if(process.env.BOT_TOKEN) {uptimeTimer = setInterval(function () {i++},1000*60*60)}
+if(process.env.BOT_TOKEN) {uptimeTimer = setInterval(function () {uptime++},1000*60*60)}
 bot.on("ready" , () => {
     bot.user.setActivity("I'm NICE")
     console.log("uncy bot is ready")
@@ -56,8 +56,6 @@ bot.on("message", async (message) => {
     if(message.content.indexOf(prefix) !== 0){return}
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const command = args.shift().toLowerCase()
-    let params = ""
-    if(args.length == 2) {perams = args[1]}
     //var command = message.content.toLowerCase().split(prefix.toLowerCase())
     if(command == "nice_words") {
         console.log("NICE is finding nice words")
@@ -144,7 +142,7 @@ bot.on("message", async (message) => {
         let incidentchannel = message.guild.channels.find(`name`, "incidents");
         if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
         message.guild.member(bUser).ban(bReason);
-        incidentchannel.send(bEmbed);
+        incidentcha nnel.send(bEmbed);
     }
     if(command == "kick") {
         let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -210,8 +208,7 @@ bot.on("message", async (message) => {
         } else {
             coin = "tails"
         }
-        fembed.addField(`${coin}!`)
-        fembed.setDiscription(`Have fun with your coin ${message.author.tag}!`)
+        fembed.addField(`${coin}!`, `Have fun with your coin ${message.author.tag}!`)
         message.channel.send({
             embed: fembed
         })
@@ -223,9 +220,10 @@ bot.on("message", async (message) => {
 bot.on("guildMemberAdd", member => {
     let channel = member.guild.channels.find(ch => ch.name === 'member-log')
     if (!channel) {return}
-    let jembed = new Discord.RichEmbed()
-    jembed.setColor(embedBlue)
-    jembed.setAuthor(bot.user.tag, bot.user.displayAvatarURL)
+    let jembed = createEmbed()
     jembed.addField(`Welcome to the server, ${member}`)
+    member.send({
+        embed: jembed
+    })
 })
 bot.login(process.env.BOT_TOKEN)
