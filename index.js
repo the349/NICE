@@ -3,6 +3,7 @@ console.log("uncy bot is loading files")
 const Discord = require("discord.js")
 //const commando = require("discord.js-commando")
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest
+const fs = require('fs')
 console.log("uncy bot is loading vars")
 const embedRed = 0xff0000
 const embedOrange = 0xff790c
@@ -22,9 +23,12 @@ console.log("uncy bot is loading discord bot")
 const bot = new Discord.Client()
 let messageCount = 0
 let yesnorid = 0
-let pointData = {
-    users: {},
-    servers:{}
+let serverData = {
+    servers:{
+        users: {},
+        channels: {},
+        guilds: {}
+    }
 }
 function runCommand(i, e) {
     if(i && e) {
@@ -33,6 +37,14 @@ function runCommand(i, e) {
         }
     }
 }
+function createEmbed() {
+    let cembed = new Discord.RichEmbed()
+    cembed.setAuthor(bot.user.tag, bot.user.displayAvatarURL)
+    cembed.setColor(embedPurple)
+    return cembed
+}
+let uptime = 0
+let uptimeTimer = setInterval(function () {i++},1000*60*60)
 bot.on("ready" , () => {
     bot.user.setActivity("I'm NICE")
     console.log("uncy bot is ready")
@@ -43,6 +55,8 @@ bot.on("message", async (message) => {
     if(message.content.indexOf(prefix) !== 0){return}
     const args = message.content.slice(prefix.length).trim().split(/ +/g)
     const command = args.shift().toLowerCase()
+    let params = ""
+    if(args.length == 2) {perams = args[1]}
     //var command = message.content.toLowerCase().split(prefix.toLowerCase())
     if(command == "nice_words") {
         console.log("NICE is finding nice words")
@@ -79,39 +93,24 @@ bot.on("message", async (message) => {
         .then(msg => console.log(`Deleted message from ${msg.author.username}`))
         .catch(console.error);
     }
-    /*if(message.content.toLowerCase().includes("nice:will") || message.content.toLowerCase().includes("nice:am")) {
-        var yesnoapi = new XMLHttpRequest()
-        yesnoapi.onreadystatechange = function () {
-            console.log(yesnoapi.readyState)
-            console.log(yesnoapi.status)
-            if (yesnoapi.readyState == 1 && yesnoapi.status == 0) {
-                console.log(yesnoapi)
-            }
-        }
-        console.log(yesnoapi)
-        yesnoapi.open("GET", "http://yesno.wtf")
-        yesnoapi.send()
-    }*/
     if(command == "ping") {
         const m = await message.channel.send("Ping?");
         //console.log(m)
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. api Latency is ${Math.round(bot.ping)}ms`)
     }
     if(command == "help") {
-        const kembed = new Discord.RichEmbed()
-        .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
+        const kembed = createEmbed()
         .addField("Here is a list of commands", {image: "https://github.com/the349/NICE/blob/master/icons/help.png"})
         message.author.send({
             embed:kembed
         })
     }
     if(command == "info") {
-        const iembed = new Discord.RichEmbed()
-        .setAuthor(bot.user.tag, bot.user.displayAvatarURL)
-        .addField(`**version**: ${version}`)
-        .addField(`**API version**: ${api_version}`)
-        .addField(`**Servers**: ${bot.guilds.size}`)
-        .setColor(embedBlue)
+        const iembed = createEmbed()
+        .addField(`**Version**`, version)
+        .addField(`**API version**`, api_version)
+        .addField(`**Servers**`, bot.guilds.size)
+        .addField(`**Uptime**`, `${uptime}h`)
         message.channel.send({
             embed:iembed
         })
@@ -168,9 +167,9 @@ bot.on("message", async (message) => {
     if(command == "avatar") {
         let auser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!auser) {return message.channel.send("Can't find user!")}
-        let aembed = new Discord.RichEmbed()
-        aembed.setColor(embedPurple)
-        aembed.setAuthor(auser.tag, auser.displayAvaterURL)
+        let aembed = createEmbed()
+        aembed.addField(auser.username, `This is ${auser.tag}'s avatar`)
+        aembed.setImage(auser.avatarURL)
         message.channel.send({
             embed: aembed
         })
@@ -186,12 +185,34 @@ bot.on("message", async (message) => {
         })
     }
     if(command == "points") {
-        let pembed = new Discord.RichEmbed()
-        pembed.setColor(embedPurple)
-        pembed.setAuthor(bot.user.tag, bot.user.displayAvatarURL)
-        pembed.addField("The point system is not up yet.")
+        let pembed = createEmbed()
+        pembed.addField("The point system is not up yet.", `Sorry ${message.author.tag}`)
         message.channel.send({
             embed: pembed
+        })
+    }
+    /*if(command == "mute") {
+        let auser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        let membed = createEmbed()
+        membed.addField('Muted')
+        membed.setDescription(`User ${auser} was muted`)
+        message.channel.send({
+            embed: membed
+        })
+    }*/
+    if(command == "flip") {
+        let coin = ""
+        let fembed = createEmbed()
+        let x = (Math.floor(Math.random() * 2) == 0);
+        if(x) {
+            coin = "heads"
+        } else {
+            coin = "tails"
+        }
+        fembed.addField(`${coin}!`)
+        fembed.setDiscription(`Have fun with your coin ${message.author.tag}!`)
+        message.channel.send({
+            embed: fembed
         })
     }
     //console.log(command)
