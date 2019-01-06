@@ -1,0 +1,40 @@
+# Labels and users that hellobot should ignore.
+ignore:
+  labels:
+  - label
+  users:
+  - user
+
+# Issue configuration for labels to add and message to send.
+issue:
+  # Disable issue message. Enabled by default.
+  disabled: false
+  # Labels to add.
+  labels:
+  - bug
+  # Message to send. "@{author}" will be replaced by the user created the issue.
+  message: |
+    Hello @@{author} :wave:
+
+    I'm your friendly neighborhood bot and would like to say thank you for filling this issue,
+    a maintainer of this repository will come back to you as soon as possible.
+
+    Best regards,
+
+    ~ Hellobot
+pull_request:
+  # Disable pull requests message. Enabled by default.
+  disabled: false
+  # Labels to add.
+  labels:
+  - bug
+  # Message to send. "@{author}" will be replaced by the user created the pull request.
+  message: |
+    Hello @@{author} :wave:
+
+    I'm your friendly neighborhood bot and would like to say thank you for your contribution,
+    a maintainer of this repository will come back to you as soon as possible.
+
+    Best regards,
+
+    ~ Hellobot
