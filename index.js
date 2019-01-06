@@ -221,9 +221,14 @@ bot.on("guildMemberAdd", member => {
     let channel = member.guild.channels.find(ch => ch.name === 'member-log')
     if (!channel) {return}
     let jembed = createEmbed()
-    jembed.addField(`Welcome to the server, ${member}`)
+    let mjembed = createEmbed()
+    jembed.addField(`Welcome!`, `Welcome to the server <${member.id}>`)
+    mjembed.addField(`New member`, `User <${member.id}> has joined`)
     member.send({
         embed: jembed
+    })
+    channel.send({
+        embed:jembed
     })
 })
 bot.login(process.env.BOT_TOKEN)
