@@ -6,6 +6,7 @@
   "dependencies": {
     "bufferutil": "^3.0.5",
     "discord.js": "^11.3.2",
+    "lodash": ">=4.17.11"
     "erlpack": "github:discordapp/erlpack",
     "firebase": "^5.3.0",
     "libsodium-wrappers": "^0.7.3",
